@@ -59,10 +59,10 @@ h5,
 h6 {
   text-wrap: balance;
 }
-/*
-  10. Create a root stacking context
-*/
-#root,
-#__next {
+
+#root {
   isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
