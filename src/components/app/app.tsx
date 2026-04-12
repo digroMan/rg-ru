@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useGetListPosts } from "../../hooks";
 import { ListPosts } from "../list-posts";
 import styles from "./app.module.css";
@@ -10,8 +10,9 @@ export function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<Navigate to={"/list/1"} />} />
       <Route
-        path="/"
+        path="/list/:pageId"
         element={
           <>
             {isLoading && <h2 className={styles.title}>Loading ...</h2>}

@@ -9,10 +9,10 @@
 
 .item {
   font-family: "Ubuntu";
-  padding-inline: 7px;
   cursor: pointer;
   transition: transform 0.1s linear;
   user-select: none;
+  padding-inline: 7px;
 }
 
 .item_select {
@@ -20,6 +20,7 @@
   border-radius: 8px;
   background: #e3f2fd;
   color: #0d47a1;
+  pointer-events: none;
 }
 
 .item:hover {

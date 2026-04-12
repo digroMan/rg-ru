@@ -6,7 +6,7 @@ import clsx from "clsx";
 export type TListPagesProps = Pick<
   TUseSwitchPageResult,
   "totalPages" | "navigateToPage"
-> & { page: number };
+> & { page: string };
 
 const ListPages = memo(
   ({
@@ -21,7 +21,7 @@ const ListPages = memo(
 
     const handleClick = useCallback(
       (event: React.MouseEvent<HTMLLIElement>) => {
-        navigateToPage(Number(event.currentTarget.textContent));
+        navigateToPage(event.currentTarget.textContent);
       },
       [],
     );
@@ -31,7 +31,10 @@ const ListPages = memo(
         {pageNumbering.map((i, index) => (
           <li
             key={index}
-            className={clsx(styles.item, page === i && styles.item_select)}
+            className={clsx(
+              styles.item,
+              Number(page) === i && styles.item_select,
+            )}
             onClick={handleClick}
           >
             {i}
