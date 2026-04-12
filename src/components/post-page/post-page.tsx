@@ -10,15 +10,13 @@ export const PostPage = ({ listPosts }: TListPostsProps): React.JSX.Element => {
   const { pId } = useParams<string>();
 
   useEffect(() => {
-    if (listPosts.length > 0) console.log(pId);
-    console.log(listPosts);
     setPost(listPosts.find((i) => i.id === Number(pId)));
   }, [pId, listPosts]);
 
   if (!post)
     return (
       <p className={styles.paragraph}>
-        Не найдено, перейти к{" "}
+        Пост не найден, перейти к{" "}
         <Link to="/" className={styles.link}>
           списку постов
         </Link>

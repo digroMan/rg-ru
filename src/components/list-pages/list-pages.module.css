@@ -9,7 +9,7 @@
 
 .item {
   font-family: "Ubuntu";
-  padding-inline: 5px;
+  padding-inline: 7px;
   cursor: pointer;
   transition: transform 0.1s linear;
   user-select: none;

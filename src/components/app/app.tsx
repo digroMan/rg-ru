@@ -3,6 +3,7 @@ import { useGetListPosts } from "../../hooks";
 import { ListPosts } from "../list-posts";
 import styles from "./app.module.css";
 import { PostPage } from "../post-page";
+import { Page404 } from "../page-404";
 
 export function App() {
   const [listPostsDTO, isLoading] = useGetListPosts();
@@ -22,6 +23,7 @@ export function App() {
         path="/post/:pId"
         element={<PostPage listPosts={listPostsDTO} />}
       />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   );
 }

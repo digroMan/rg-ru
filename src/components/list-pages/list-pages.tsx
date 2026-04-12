@@ -19,9 +19,12 @@ const ListPages = memo(
       [totalPages],
     );
 
-    const handleClick = useCallback((event) => {
-      navigateToPage(Number(event.target.textContent));
-    }, []);
+    const handleClick = useCallback(
+      (event: React.MouseEvent<HTMLLIElement>) => {
+        navigateToPage(Number(event.currentTarget.textContent));
+      },
+      [],
+    );
 
     return (
       <ul className={styles.container}>

@@ -1,0 +1,16 @@
+.paragraph {
+  padding-top: 50px;
+  font-family: "Ubuntu";
+  color: #5d6878;
+  font-size: 14px;
+}
+
+.link {
+  border-radius: 8px;
+  padding-inline: 3px;
+  padding-block: 3px;
+  border: 1px solid #c8d6e5;
+  background: #e3f2fd;
+  border-color: #1565c0;
+  color: #0d47a1;
+}
