@@ -1,18 +1,41 @@
+.container {
+  display: flex;
+  column-gap: 15px;
+}
+
 .button {
-  padding-block: 4px;
-  padding-inline: 20px;
-  border: 2px solid #7e957d;
-  font-size: 12px;
+  font-family: "Ubuntu";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 15px;
+  padding-block: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1565c0;
+  background: #fff;
+  border: 1px solid #c8d6e5;
   border-radius: 8px;
-  margin-right: 15px;
   cursor: pointer;
+  user-select: none;
+  transition:
+    transform 0.2s linear,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 .button_disabled {
-  opacity: 0.5;
+  opacity: 0.4;
+  cursor: none;
+  pointer-events: none;
 }
+
 .button:hover {
-  filter: invert(1);
+  background: #e3f2fd;
+  border-color: #1565c0;
+  color: #0d47a1;
 }
-.button:last-of-type {
-  margin-right: 0;
+
+.button:active {
+  transform: scale(1.05);
 }

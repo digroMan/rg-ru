@@ -34,13 +34,12 @@ export const ListPosts = ({
         {/* Для предотвращения ререндера Pagination */}
         <ListPages navigateToPage={navigateToPage} totalPages={totalPages} />
       </Pagination>
-      <ul className={styles.list_posts}>
-        {currentPosts.map((i, index) => {
-          // const isLast = index === listPosts.length - 1;
+      <ul className={styles.list}>
+        {currentPosts.map((i) => {
           return (
-            <li key={i.id} className={styles.item_post}>
-              <h3>{i.title}</h3>
-              <p>{i.body}</p>
+            <li key={i.id} className={styles.item}>
+              <h3 className={styles.item_title}>{i.title}</h3>
+              <p className={styles.item_body}>{i.body}</p>
             </li>
           );
         })}

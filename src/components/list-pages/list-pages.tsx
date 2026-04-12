@@ -19,9 +19,9 @@ const ListPages = memo(
     }, []);
 
     return (
-      <ul className={styles.list_pages}>
+      <ul className={styles.container}>
         {pageNumbering.map((i, index) => (
-          <li key={index} className={styles.item_page} onClick={handleClick}>
+          <li key={index} className={styles.item} onClick={handleClick}>
             {i}
           </li>
         ))}

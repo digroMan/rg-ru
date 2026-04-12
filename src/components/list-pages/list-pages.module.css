@@ -1,5 +1,23 @@
-.list_pages {
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.item_page {
+.item {
+  font-family: "Ubuntu";
+  padding-inline: 5px;
+  cursor: pointer;
+  transition: transform 0.1s linear;
+}
+
+.item:hover {
+  transform: scale(1.25);
+}
+
+.item:active {
+  transform: scale(1.15);
 }

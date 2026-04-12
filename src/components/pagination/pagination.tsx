@@ -11,7 +11,7 @@ type TPaginationProps = {
 const Pagination = memo(
   ({ onNext, onPrev, children }: TPaginationProps): React.JSX.Element => {
     return (
-      <div className={styles.buttons_container}>
+      <div className={styles.container}>
         <button
           className={clsx(styles.button, styles.button_pre)}
           type="button"
