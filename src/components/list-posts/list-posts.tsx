@@ -1,51 +1,44 @@
 import type React from "react";
-import {
-  useListPosts,
-  useSetListPosts,
-} from "../../context/list-posts-context";
 import type { IListPostsDTO } from "../../hooks/use-get-list-posts";
 import { Pagination } from "../pagination";
 import styles from "./list-posts.module.css";
-import { useEffect, useMemo, useState } from "react";
-import { ITEMS_PER_PAGE } from "../../utils/constants";
+import { useSwitchPage } from "../../hooks";
+import { useEffect } from "react";
+import { ListPages } from "../list-pages";
 
-export type TListPosts = {
+export type TListPostsProps = {
   listPosts: IListPostsDTO[];
 };
 
-export function ListPosts({ listPosts }: TListPosts): React.JSX.Element {
-  const ctxListPosts = useListPosts();
-  const [page, setPage] = useState(1);
-  const setListPosts = useSetListPosts();
+export const ListPosts = ({
+  listPosts,
+}: TListPostsProps): React.JSX.Element => {
+  const {
+    page,
+    currentPosts,
+    totalPages,
+    handleClickNext,
+    handleClickPrev,
+    navigateToPage,
+  } = useSwitchPage({
+    listPosts,
+  });
 
-  useEffect(() => {
-    setListPosts(listPosts);
-  }, []);
-
-  const totalPages = Math.max(1, Math.ceil(listPosts.length / ITEMS_PER_PAGE));
-
-  const currentPosts = useMemo(() => {
-    const start = (page - 1) * ITEMS_PER_PAGE;
-    return ctxListPosts.slice(start, start + ITEMS_PER_PAGE);
-  }, [ctxListPosts, page]);
-
-  const handleClickNext = (): void => {
-    setPage((p) => Math.min(p + 1, totalPages));
-  };
-
-  const handleClickPrev = (): void => {
-    setPage((p) => Math.max(p - 1, 1));
-  };
+  useEffect(() => navigateToPage(1), []);
 
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>Posts list</h2>
-      <Pagination onNext={handleClickNext} onPrev={handleClickPrev} />
-      <ul className={styles.list}>
+      <Pagination onNext={handleClickNext} onPrev={handleClickPrev}>
+        {/* Возможно нужно сделать стабильную ссылку на компонент ListPages*/}
+        {/* Для предотвращения ререндера Pagination */}
+        <ListPages navigateToPage={navigateToPage} totalPages={totalPages} />
+      </Pagination>
+      <ul className={styles.list_posts}>
         {currentPosts.map((i, index) => {
-          // const isLast = index === todoItems.length - 1;
+          // const isLast = index === listPosts.length - 1;
           return (
-            <li key={i.id} className={styles.item}>
+            <li key={i.id} className={styles.item_post}>
               <h3>{i.title}</h3>
               <p>{i.body}</p>
             </li>
@@ -54,4 +47,4 @@ export function ListPosts({ listPosts }: TListPosts): React.JSX.Element {
       </ul>
     </section>
   );
-}
+};

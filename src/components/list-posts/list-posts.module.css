@@ -12,7 +12,7 @@
   font-size: 23px;
   font-weight: 500;
 }
-.list {
+.list_posts {
   width: 500px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
   opacity: 0.25;
 }
 
-.item {
+.item_post {
   display: flex;
   justify-content: space-between;
   align-items: center;
