@@ -12,6 +12,14 @@
   padding-inline: 5px;
   cursor: pointer;
   transition: transform 0.1s linear;
+  user-select: none;
+}
+
+.item_select {
+  border: 1px solid #1565c0;
+  border-radius: 8px;
+  background: #e3f2fd;
+  color: #0d47a1;
 }
 
 .item:hover {

@@ -1,14 +1,19 @@
 import { memo, useCallback, useMemo } from "react";
 import styles from "./list-pages.module.css";
 import type { TUseSwitchPageResult } from "../../hooks/use-switch-page";
+import clsx from "clsx";
 
 export type TListPagesProps = Pick<
   TUseSwitchPageResult,
   "totalPages" | "navigateToPage"
->;
+> & { page: number };
 
 const ListPages = memo(
-  ({ totalPages, navigateToPage }: TListPagesProps): React.JSX.Element => {
+  ({
+    totalPages,
+    navigateToPage,
+    page,
+  }: TListPagesProps): React.JSX.Element => {
     const pageNumbering = useMemo(
       () => Array.from({ length: totalPages }, (_, i) => i + 1),
       [totalPages],
@@ -21,7 +26,11 @@ const ListPages = memo(
     return (
       <ul className={styles.container}>
         {pageNumbering.map((i, index) => (
-          <li key={index} className={styles.item} onClick={handleClick}>
+          <li
+            key={index}
+            className={clsx(styles.item, page === i && styles.item_select)}
+            onClick={handleClick}
+          >
             {i}
           </li>
         ))}

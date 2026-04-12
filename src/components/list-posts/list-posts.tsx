@@ -5,6 +5,7 @@ import styles from "./list-posts.module.css";
 import { useSwitchPage } from "../../hooks";
 import { useEffect } from "react";
 import { ListPages } from "../list-pages";
+import { Link } from "react-router-dom";
 
 export type TListPostsProps = {
   listPosts: IListPostsDTO[];
@@ -32,14 +33,20 @@ export const ListPosts = ({
       <Pagination onNext={handleClickNext} onPrev={handleClickPrev}>
         {/* Возможно нужно сделать стабильную ссылку на компонент ListPages*/}
         {/* Для предотвращения ререндера Pagination */}
-        <ListPages navigateToPage={navigateToPage} totalPages={totalPages} />
+        <ListPages
+          navigateToPage={navigateToPage}
+          totalPages={totalPages}
+          page={page}
+        />
       </Pagination>
       <ul className={styles.list}>
         {currentPosts.map((i) => {
           return (
             <li key={i.id} className={styles.item}>
-              <h3 className={styles.item_title}>{i.title}</h3>
-              <p className={styles.item_body}>{i.body}</p>
+              <Link to={`/post/${i.id}`}>
+                <h3 className={styles.item_title}>{i.title}</h3>
+                <p className={styles.item_body}>{i.body}</p>
+              </Link>
             </li>
           );
         })}

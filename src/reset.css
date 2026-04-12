@@ -60,6 +60,13 @@ h6 {
   text-wrap: balance;
 }
 
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: unset;
+}
+
 #root {
   isolation: isolate;
   display: flex;
