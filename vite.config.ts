@@ -4,6 +4,6 @@ import readableClassnames from "vite-plugin-readable-classnames";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/",
+  base: "/rg-ru/",
   plugins: [react(), readableClassnames()],
 });
