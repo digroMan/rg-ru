@@ -26,7 +26,7 @@ export const ListPosts = ({
 
   const { pageId } = useParams();
 
-  useEffect(() => navigateToPage(pageId), []);
+  useEffect(() => navigateToPage(pageId), [navigateToPage, pageId]);
 
   return (
     <section className={styles.container}>

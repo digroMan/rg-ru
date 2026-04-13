@@ -17,7 +17,7 @@ export const useSwitchPage = ({
   const { pageId } = useParams();
   const navigate = useNavigate();
   const [currentPosts, setCurrentPosts] = useState<IListPostsDTO[]>([]);
-  const [page, setPage] = useState(Number(pageId) ?? 1);
+  const [page, setPage] = useState(Number(pageId) || 1);
 
   const totalPages = useMemo(
     () => Math.max(1, Math.ceil(listPosts.length / ITEMS_PER_PAGE)),
@@ -26,7 +26,7 @@ export const useSwitchPage = ({
 
   const handleClickNext = useCallback(() => {
     setPage((p) => Math.min(p + 1, totalPages));
-  }, []);
+  }, [totalPages]);
 
   const handleClickPrev = useCallback(() => {
     setPage((p) => Math.max(p - 1, 1));
@@ -40,7 +40,7 @@ export const useSwitchPage = ({
     const start = (page - 1) * ITEMS_PER_PAGE;
     setCurrentPosts(listPosts.slice(start, start + ITEMS_PER_PAGE));
     navigate(`/list/${page}`);
-  }, [page]);
+  }, [page, listPosts, navigate]);
 
   return {
     currentPosts,

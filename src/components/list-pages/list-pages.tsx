@@ -23,7 +23,7 @@ const ListPages = memo(
       (event: React.MouseEvent<HTMLLIElement>) => {
         navigateToPage(event.currentTarget.textContent);
       },
-      [],
+      [navigateToPage],
     );
 
     return (
